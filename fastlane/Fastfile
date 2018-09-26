@@ -86,11 +86,11 @@ platform :ios do
       value: options[:build_number].to_s
     )
 
-    register_devices(
-      devices_file: options[:build_root] + "devices.txt",
-      team_id: "Q5L7576G62",
-      # username: "mandarin@mandarin.no"
-    )
+    # register_devices(
+    #   devices_file: options[:build_root] + "devices.txt",
+    #   team_id: "Q5L7576G62",
+    #   # username: "mandarin@mandarin.no"
+    # )
 
     ensure_temp_keychain(ENV["MATCH_KEYCHAIN_NAME"])
 
