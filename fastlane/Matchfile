@@ -1,4 +1,4 @@
-git_url("https://github.com/mandarinx/travis-certs")
+git_url("git@github.com:mandarinx/travis-certs.git")
 git_branch("team_mandarin")
 
 type("adhoc") # The default type, can be: appstore, adhoc, enterprise or development

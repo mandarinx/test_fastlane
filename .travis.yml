@@ -19,8 +19,11 @@ cache:
 
 # decrypt the encrypted SSH key file so it can be used for scp auth in post_build.sh
 before_install:
+  - openssl aes-256-cbc -K $encrypted_23802f822e63_key -iv $encrypted_23802f822e63_iv -in setup_ssh.sh.enc -out ./Scripts/setup_ssh.sh -d
+  - chmod +x ./Scripts/setup_ssh.sh
+  - . ./Scripts/setup_ssh.sh
   - bundle install
-  - sudo -E sh ./Scripts/before_install.sh
+  - . ./Scripts/before_install.sh
 #- bundle update fastlane
 #- openssl aes-256-cbc -k "$KEYFILE_PASS" -in "${UPLOAD_KEYPATH}.enc" -out "${UPLOAD_KEYPATH}" -d
 
