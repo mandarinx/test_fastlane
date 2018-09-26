@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="00: Verifying fastlane version" time="0.008835">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.003938">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="02: automatic_code_signing" time="0.54829">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="03: set_info_plist_value" time="0.012077">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="04: set_info_plist_value" time="0.029811">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="05: set_info_plist_value" time="0.010956">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="06: register_devices" time="5.857635">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: create_keychain" time="0.172068">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: match" time="1.921708">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: update_project_provisioning" time="0.481831">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: gym" time="0.664334">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
