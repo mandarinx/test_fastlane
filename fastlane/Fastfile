@@ -14,6 +14,7 @@
 # update_fastlane
 
 fastlane_version "2.105.2"
+xcversion(version: "10.0")
 default_platform(:ios)
 platform :ios do
 
@@ -123,10 +124,10 @@ platform :ios do
 
     pilot(
       ipa: "TravisTest.ipa",
-      username: "tviktil@gmail.com",
-      app_identifier: "no.mandarin.travistest",
-      team_id: "652248",
-      dev_portal_team_id: "Q5L7576G62",
+      # username: "tviktil@gmail.com",
+      # app_identifier: "no.mandarin.travistest",
+      # team_id: "652248",
+      # dev_portal_team_id: "Q5L7576G62",
       changelog: ENV["TRAVIS_COMMIT_MESSAGE"],
       distribute_external: true,
       notify_external_testers: true
