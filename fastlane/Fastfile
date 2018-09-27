@@ -14,7 +14,7 @@
 # update_fastlane
 
 fastlane_version "2.105.2"
-xcversion(version: "10.0")
+xcode_select "/Applications/Xcode.app"
 default_platform(:ios)
 platform :ios do
 
