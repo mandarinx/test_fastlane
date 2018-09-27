@@ -45,7 +45,7 @@ unitTests() {
         -logFile "${TRAVIS_BUILD_DIR}/unity.unittests.log" \
         -projectPath "${TRAVIS_BUILD_DIR}/${UNITY_PROJECT_NAME}/" \
         -runEditorTests \
-        -editorTestsResultFile "../unity.unittests.xml"
+        -editorTestsResultFile "${TRAVIS_BUILD_DIR}/unity.unittests.xml"
 
     rc0=$?
     echo "[SYNG2] Unit test log"

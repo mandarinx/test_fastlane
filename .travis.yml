@@ -1,4 +1,3 @@
-# do not install anything extra onto the image
 language: generic
 
 os: osx
@@ -20,15 +19,12 @@ cache:
   directories:
   - $UNITY_DOWNLOAD_CACHE
 
-# decrypt the encrypted SSH key file so it can be used for scp auth in post_build.sh
 before_install:
   - openssl enc -aes-256-cbc -a -d -in setup_ssh.sh.enc -out ./Scripts/setup_ssh.sh -k ${ENCRYPTION_KEY}
   - chmod +x ./Scripts/setup_ssh.sh
   - . ./Scripts/setup_ssh.sh
   - bundle install
   - . ./Scripts/before_install.sh
-#- bundle update fastlane
-#- openssl aes-256-cbc -k "$KEYFILE_PASS" -in "${UPLOAD_KEYPATH}.enc" -out "${UPLOAD_KEYPATH}" -d
 
 #install:
 #- sudo -E sh ./Scripts/install.sh
@@ -37,7 +33,6 @@ script:
   - cat ios_segment* > ios_combined.zip
   - unzip ios_combined.zip -d .
   - cp -R ./fastlane ${BUILD_PATH}/iOS/
-  # - fastlane match appstore --readonly
   - fastlane beta build_number:${TRAVIS_BUILD_NUMBER} project_path:${BUILD_PATH}/iOS/ build_root:${TRAVIS_BUILD_DIR}/
 #- sudo -E sh ./Scripts/build.sh
 

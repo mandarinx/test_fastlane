@@ -17,20 +17,6 @@ fastlane_version "2.105.2"
 default_platform(:ios)
 platform :ios do
 
-  # before_all do |lane, options|
-  #   create_keychain(
-  #     name: ENV["MATCH_KEYCHAIN_NAME"],
-  #     password: ENV["MATCH_KEYCHAIN_PASSWORD"],
-  #     # password: SecureRandom.base64,
-  #     default_keychain: true,
-  #     unlock: true,
-  #     # lock_when_sleeps: true,
-  #     timeout: 3600,
-  #     # add_to_search_list: true,
-  #     verbose: true
-  #   )
-  # end
-
   after_all do |lane|
     delete_keychain(
       name: ENV["MATCH_KEYCHAIN_NAME"]
@@ -40,11 +26,7 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do |options|
 
-    # setup_travis
-    ENV["SPACESHIP_COOKIE_PATH"] = nil
-    # ENV["FASTLANE_SESSION"] = '---\n- !ruby/object:HTTP::Cookie\n  name: DES5c931c9a159d4ece84fbd99a1c28de48d\n  value: HSARMTKNSRVTWFlalanx0THh1OI+ZIEM0vNH481L0J2fNSUJhFAS0I7tq8ZOJDiEEECiIabU/tuCNbSqSgKw+TCp8p7+On3rgiei0GTHIfu3dPm1YUBK1Bh7IhSi5cFNAeg=SRVT\n  domain: idmsa.apple.com\n  for_domain: true\n  path: "/"\n  secure: true\n  httponly: true\n  expires: \n  max_age: 2592000\n  created_at: 2018-09-25 19:15:12.989878000 +02:00\n  accessed_at: 2018-09-26 09:43:57.609804000 +02:00\n- !ruby/object:HTTP::Cookie\n  name: dqsid\n  value: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmblRTMWNkUWNuMXdDV203MUE2UHZBIn0.O3Hnq6RKl7kMLW1SdGM04dj6WN6TkvrSbypwaeNY1gQ\n  domain: olympus.itunes.apple.com\n  for_domain: false\n  path: "/"\n  secure: true\n  httponly: true\n  expires: \n  max_age: 1800\n  created_at: &1 2018-09-26 13:23:45.253997000 +02:00\n  accessed_at: *1\n'
     ENV["MATCH_KEYCHAIN_PASSWORD"] = ""
-    # ENV["MATCH_KEYCHAIN_NAME"] = "test_fastlane"
 
     def ensure_temp_keychain(name)
       if File.exist?(File.expand_path("~/Library/Keychains/#{name}-db"))
@@ -74,6 +56,13 @@ platform :ios do
       value: false
     )
 
+    # try this!
+
+    # increment_build_number(
+    #   build_number: app_store_build_number + 1,
+    #   xcodeproj: "Example.xcodeproj"
+    # )
+
     set_info_plist_value(
       path: options[:project_path] + "Info.plist",
       key: "CFBundleShortVersionString",
@@ -86,28 +75,15 @@ platform :ios do
       value: options[:build_number].to_s
     )
 
-    # Not needed now that we have public link
-
-    # register_devices(
-    #   devices_file: options[:build_root] + "devices.txt",
-    #   team_id: "Q5L7576G62",
-    #   # username: "mandarin@mandarin.no"
-    # )
-
     ensure_temp_keychain(ENV["MATCH_KEYCHAIN_NAME"])
 
     match(
-      # keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
-      # keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"],
       readonly: true,
       clone_branch_directly: true,
       type: "appstore",
       force_for_new_devices: true,
-      # verbose: true
+      verbose: false
     )
-
-    # import apple worldwide developer cert
-    # sh("security import #{options[:build_root]}Certs/apple.cer -k ~/Library/Keychains/#{ENV["MATCH_KEYCHAIN_NAME"]}-db -T /usr/bin/codesign")
 
     update_project_provisioning(
       xcodeproj: options[:project_path] + "Unity-iPhone.xcodeproj",
@@ -141,6 +117,9 @@ platform :ios do
         }
       }
     )
+
+    # Where is the changelog? in an env?
+    # changelog_from_git_commits
 
     pilot(
       ipa: "TravisTest.ipa",
