@@ -37,7 +37,7 @@ script:
   - cat ios_segment* > ios_combined.zip
   - unzip ios_combined.zip -d .
   - cp -R ./fastlane ${BUILD_PATH}/iOS/
-  - fastlane match appstore --readonly
+  # - fastlane match appstore --readonly
   - fastlane beta build_number:${TRAVIS_BUILD_NUMBER} project_path:${BUILD_PATH}/iOS/ build_root:${TRAVIS_BUILD_DIR}/
 #- sudo -E sh ./Scripts/build.sh
 

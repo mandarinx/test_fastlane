@@ -1,5 +1,5 @@
 app_identifier("no.mandarin.travistest") # The bundle identifier of your app
-apple_id("mandarin@mandarin.no") # Your Apple email address
+apple_id("tviktil@gmail.com") # Your Apple email address
 
 itc_team_id("652248") # App Store Connect Team ID
 team_id("Q5L7576G62") # Developer Portal Team ID
