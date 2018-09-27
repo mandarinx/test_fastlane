@@ -148,6 +148,7 @@ platform :ios do
       app_identifier: "no.mandarin.travistest",
       team_id: "652248",
       dev_portal_team_id: "Q5L7576G62",
+      changelog: ENV["TRAVIS_COMMIT_MESSAGE"],
       distribute_external: true,
       notify_external_testers: true
     )
